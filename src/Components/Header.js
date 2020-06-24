@@ -1,13 +1,20 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import { Typography, Grid, Avatar, IconButton } from "@material-ui/core";
+import {
+  Typography,
+  Grid,
+  Avatar,
+  IconButton,
+  Button,
+  Link,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import avatar from "../Images/mypic.jpg";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 const useStyles = makeStyles((theme) => ({
   homeConatiner: {
-    padding: "8vh 20px 10px 20px",
+    padding: "8vh 20px 5px 20px",
     background: "-webkit-radial-gradient(circle, #2c3e50, #1a1a1a)",
     textShadow: "1px 1px 10px #000",
     boxShadow: "2px 2px 20px #000",
@@ -42,10 +49,24 @@ const useStyles = makeStyles((theme) => ({
     width: "70%",
     margin: "20px auto",
     color: "#fff",
+    boxSizing: "border-box",
     "& .MuiTypography-h5": {
       textAlign: "center",
-      marginBottom: "20px",
+      marginBottom: "10px",
       fontSize: "30px",
+    },
+  },
+  aboutLink :{
+    padding: '10px 25px',
+    transition: "0.3s linear",
+      "&:hover": {
+        background : '#1B1F24'
+      },
+  },
+
+  [theme.breakpoints.down("xs")]: {
+    aboutItems: {
+      width: "90%",
     },
   },
 }));
@@ -64,30 +85,36 @@ const Header = () => {
         I create software, design websites, and make ideas happen
       </Typography>
       <Grid container justify="center">
-        <IconButton className={classes.socialItems}>
+        <IconButton className={classes.socialItems} target='_blank' href='https://github.com/shuvojit007'>
           <GitHubIcon />
         </IconButton>
-        <IconButton className={classes.socialItems}>
+        <IconButton className={classes.socialItems} target='_blank' href='https://www.linkedin.com/in/shuvojitkar'>
           <LinkedInIcon />
         </IconButton>
       </Grid>
       <Grid container className={classes.aboutItems}>
         <Grid item container xs={6} justify="space-around">
           <Grid item xs={12} md={3}>
-            <Typography variant="h5" textAlign="center">
-              About Me
+            <Typography variant="h5">
+              <Link color="inherit" className={classes.aboutLink} href="#" underline='none'>About</Link>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography variant="h5">Resume</Typography>
+            <Typography variant="h5">
+            <Link color="inherit" className={classes.aboutLink} href="#" underline='none'>Resume</Link>
+            </Typography>
           </Grid>
         </Grid>
         <Grid item container xs={6} justify="space-around">
           <Grid item xs={12} md={3}>
-            <Typography variant="h5">Contact</Typography>
+            <Typography variant="h5">
+            <Link color="inherit" className={classes.aboutLink} href="#" underline='none'>Contact</Link>
+            </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography variant="h5">Blog</Typography>
+            <Typography variant="h5">
+            <Link color="inherit" className={classes.aboutLink} target='_blank' href="https://www.programming-hero.com/" underline='none'>Blog</Link>
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
