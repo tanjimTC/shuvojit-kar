@@ -56,12 +56,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "30px",
     },
   },
-  aboutLink :{
-    padding: '10px 25px',
+  aboutLink: {
+    padding: "10px 25px",
     transition: "0.3s linear",
-      "&:hover": {
-        background : '#1B1F24'
-      },
+    "&:hover": {
+      background: "#1B1F24",
+    },
   },
 
   [theme.breakpoints.down("xs")]: {
@@ -85,10 +85,18 @@ const Header = () => {
         I create software, design websites, and make ideas happen
       </Typography>
       <Grid container justify="center">
-        <IconButton className={classes.socialItems} target='_blank' href='https://github.com/shuvojit007'>
+        <IconButton
+          className={classes.socialItems}
+          target="_blank"
+          href="https://github.com/shuvojit007"
+        >
           <GitHubIcon />
         </IconButton>
-        <IconButton className={classes.socialItems} target='_blank' href='https://www.linkedin.com/in/shuvojitkar'>
+        <IconButton
+          className={classes.socialItems}
+          target="_blank"
+          href="https://www.linkedin.com/in/shuvojitkar"
+        >
           <LinkedInIcon />
         </IconButton>
       </Grid>
@@ -96,24 +104,53 @@ const Header = () => {
         <Grid item container xs={6} justify="space-around">
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
-              <Link color="inherit" className={classes.aboutLink} href="#" underline='none'>About</Link>
+              <Link
+                color="inherit"
+                className={classes.aboutLink}
+                href="#"
+                underline="none"
+              >
+                About
+              </Link>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
-            <Link color="inherit" className={classes.aboutLink} href="#" underline='none'>Resume</Link>
+              <Link
+                color="inherit"
+                className={classes.aboutLink}
+                href="#"
+                underline="none"
+              >
+                Resume
+              </Link>
             </Typography>
           </Grid>
         </Grid>
         <Grid item container xs={6} justify="space-around">
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
-            <Link color="inherit" className={classes.aboutLink} href="#" underline='none'>Contact</Link>
+              <Link
+                color="inherit"
+                className={classes.aboutLink}
+                href="#"
+                underline="none"
+              >
+                Contact
+              </Link>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
-            <Link color="inherit" className={classes.aboutLink} target='_blank' href="https://www.programming-hero.com/" underline='none'>Blog</Link>
+              <Link
+                color="inherit"
+                className={classes.aboutLink}
+                target="_blank"
+                href="https://www.programming-hero.com/"
+                underline="none"
+              >
+                Blog
+              </Link>
             </Typography>
           </Grid>
         </Grid>
