@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Grid, Typography, Button, Divider } from "@material-ui/core";
+import { Box, Grid, Typography, Button, Chip } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import TimeLineItems from "./TimeLineItems";
 const useStyles = makeStyles((theme) => ({
   timelineWrapper: {
     width: "70%",
@@ -27,23 +28,7 @@ const useStyles = makeStyles((theme) => ({
   btnResume: {
     borderRadius: "25px",
     marginBottom: "20px",
-    padding: "10px 20px",
-    color: "#fff",
-    backgroundColor: "#4caf50",
-    transition: "0.3s linear",
-    boxShadow: "0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)",
-    "&:hover": {
-      color: "#4caf50",
-      backgroundColor: "#fff",
-    },
-    "& .MuiButton-label": {
-      fontSize: "20px",
-    },
-  },
-  btnResume2: {
-    borderRadius: "25px",
-    marginBottom: "20px",
-    padding: "10px 20px",
+    padding: "10px 15px",
     color: "#fff",
     backgroundColor: "#4caf50",
     transition: "0.3s linear",
@@ -56,9 +41,39 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "18px",
     },
   },
-  buttonContainer :{
-      width : '80%',
-      margin : 'auto'
+  btnResume2: {
+    borderRadius: "25px",
+    marginBottom: "20px",
+    padding: "10px 15px",
+    color: "#fff",
+    backgroundColor: "#4caf50",
+    transition: "0.3s linear",
+    boxShadow: "0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)",
+    "&:hover": {
+      color: "#4caf50",
+      backgroundColor: "#fff",
+    },
+    "& .MuiButton-label": {
+      fontSize: "18px",
+    },
+  },
+  buttonContainer: {
+    width: "80%",
+    margin: "auto",
+  },
+  chipContainer: {
+    width: "85%",
+    margin: "10px auto",
+    justifyContent: "center",
+    "& .MuiChip-label": {
+      fontSize: "16px",
+      fontWeight: "500",
+      color: "#0D47A1",
+      padding: "14px 18px",
+    },
+    "& .MuiChip-root": {
+      margin: "4px",
+    },
   },
   [theme.breakpoints.down("xs")]: {
     timelineWrapper: {
@@ -68,21 +83,24 @@ const useStyles = makeStyles((theme) => ({
     timelineLeftItems: {
       padding: "20px 0",
     },
+    timelineRight: {
+      width: "100%",
+    },
     btnResume: {
       padding: "10px 20px",
       "& .MuiButton-label": {
-        fontSize: "17px",
+        fontSize: "16px",
       },
     },
     btnResume2: {
       padding: "10px 20px",
       "& .MuiButton-label": {
-        fontSize: "17px",
+        fontSize: "16px",
       },
     },
-    buttonContainer :{
-        width : '95%',
-    }
+    buttonContainer: {
+      width: "90%",
+    },
   },
 }));
 const TimeLine = () => {
@@ -107,33 +125,38 @@ const TimeLine = () => {
           >
             <Typography align="center" variant="h4" style={{ margin: "auto" }}>
               <i
-                style={{ color: "#0D47A1", marginRight: "10px" }}
-                class="far fa-file-alt"
+                style={{ color: "#0D47A1", marginRight: "7px" }}
+                className="far fa-file-alt"
               ></i>
               Download My Résume
             </Typography>
             <Typography style={{ fontSize: "20px", margin: "20px 25px" }}>
               You can download my résume in <b>PDF</b> format if you would like.
             </Typography>
-            <Grid container alignItems="center" className={classes.buttonContainer}>
+            <Grid
+              container
+              alignItems="center"
+              className={classes.buttonContainer}
+            >
               <Grid item xs={6} md={12} lg={6}>
                 <Button className={classes.btnResume}>
                   <i
-                    class="fas fa-cloud-download-alt"
-                    style={{ marginRight: "15px" }}
+                    className="fas fa-cloud-download-alt"
+                    style={{ marginRight: "8px" }}
                   ></i>
                   Download
                 </Button>
               </Grid>
               <Grid item xs={6} md={12} lg={6}>
                 <Button className={classes.btnResume}>
-                  <i class="fas fa-eye" style={{ marginRight: "10px" }}></i>
+                  <i className="fas fa-eye" style={{ marginRight: "7px" }}></i>
                   View
                 </Button>
               </Grid>
             </Grid>
           </Grid>
-          <Divider />
+
+          <hr style={{ width: "90%" }} />
 
           <Grid
             container
@@ -147,35 +170,192 @@ const TimeLine = () => {
               style={{ margin: "10px auto 25px auto" }}
             >
               <i
-                style={{ color: "#0D47A1", marginRight: "10px" }}
-                class="fab fa-github"
+                style={{ color: "#0D47A1", marginRight: "7px" }}
+                className="fab fa-github"
               ></i>
               <i
-                style={{ color: "#0D47A1", marginRight: "10px" }}
-                class="fab fa-linkedin"
+                style={{ color: "#0D47A1", marginRight: "7px" }}
+                className="fab fa-linkedin"
               ></i>
               GitHub & LinkedIn
             </Typography>
-            <Grid container alignItems="center" className={classes.buttonContainer}>
+            <Grid
+              container
+              alignItems="center"
+              className={classes.buttonContainer}
+            >
               <Grid item xs={6} md={12} lg={6}>
                 <Button className={classes.btnResume}>
                   <i
-                    class="fab fa-github"
-                    style={{ marginRight: "15px" }}
+                    className="fab fa-github"
+                    style={{ marginRight: "8px" }}
                   ></i>
                   GitHub
                 </Button>
               </Grid>
               <Grid item xs={6} md={12} lg={6}>
                 <Button className={classes.btnResume}>
-                  <i class="fab fa-linkedin" style={{ marginRight: "10px" }}></i>
+                  <i
+                    className="fab fa-linkedin"
+                    style={{ marginRight: "7px" }}
+                  ></i>
                   LinkedIn
                 </Button>
               </Grid>
             </Grid>
           </Grid>
+
+          <hr style={{ width: "90%" }} />
+
+          <Grid
+            container
+            item
+            className={classes.timelineLeftItems}
+            align="center"
+          >
+            <Typography
+              align="center"
+              variant="h4"
+              style={{ margin: "10px auto 25px auto" }}
+            >
+              <i
+                style={{
+                  color: "#0D47A1",
+                  marginRight: "7px",
+                  fontWeight: "300",
+                }}
+                className="fa fa-code"
+              ></i>
+              Programming Languages
+            </Typography>
+            <Grid
+              container
+              alignItems="center"
+              className={classes.chipContainer}
+            >
+              <Chip label="Java" />
+              <Chip label="Kotlin" />
+              <Chip label="C" />
+              <Chip label="C++" />
+              <Chip label="Dart" />
+              <Chip label="JavaScript" />
+              <Chip label="GoLang" />
+            </Grid>
+          </Grid>
+
+          <hr style={{ width: "90%" }} />
+
+          <Grid
+            container
+            item
+            className={classes.timelineLeftItems}
+            align="center"
+          >
+            <Typography
+              align="center"
+              variant="h4"
+              style={{ margin: "10px auto 25px auto" }}
+            >
+              <i
+                style={{
+                  color: "#0D47A1",
+                  marginRight: "7px",
+                  fontWeight: "300",
+                }}
+                className="fa fa-code-branch"
+              ></i>
+              Libraries
+            </Typography>
+            <Grid
+              container
+              alignItems="center"
+              className={classes.chipContainer}
+            >
+              <Chip label="React" />
+              <Chip label="Flutter" />
+              <Chip label="Pandas" />
+              <Chip label="NLTK" />
+              <Chip label="Scikit Learn" />
+            </Grid>
+          </Grid>
+
+          <hr style={{ width: "90%" }} />
+
+          <Grid
+            container
+            item
+            className={classes.timelineLeftItems}
+            align="center"
+          >
+            <Typography
+              align="center"
+              variant="h4"
+              style={{ margin: "10px auto 25px auto" }}
+            >
+              <i
+                style={{
+                  color: "#0D47A1",
+                  marginRight: "7px",
+                  fontWeight: "300",
+                }}
+                className="fas fa-terminal"
+              ></i>
+              Tools
+            </Typography>
+            <Grid
+              container
+              alignItems="center"
+              className={classes.chipContainer}
+            >
+              <Chip label="Git" />
+              <Chip label="Google Cloud" />
+              <Chip label="AWS" />
+              <Chip label="Docker" />
+              <Chip label="Redis" />
+              <Chip label="Apache" />
+              <Chip label="Nginx" />
+            </Grid>
+          </Grid>
+
+          <hr style={{ width: "90%" }} />
+
+          <Grid
+            container
+            item
+            className={classes.timelineLeftItems}
+            align="center"
+          >
+            <Typography
+              align="center"
+              variant="h4"
+              style={{ margin: "10px auto 25px auto" }}
+            >
+              <i
+                style={{
+                  color: "#0D47A1",
+                  marginRight: "7px",
+                  fontWeight: "300",
+                }}
+                className="fas fa-graduation-cap"
+              ></i>
+              CS Coursework
+            </Typography>
+            <Grid
+              container
+              alignItems="center"
+              className={classes.chipContainer}
+            >
+              <Chip label="Artificial Intelligence" />
+              <Chip label="Machine Learning" />
+              <Chip label="Networking" />
+              <Chip label="Operating Systems" />
+              <Chip label="Data Structures & Algorithms" />
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={7} className={classes.timelineRight}></Grid>
+        <Grid item xs={12} md={7} className={classes.timelineRight}>
+          <TimeLineItems />
+        </Grid>
       </Grid>
     </Box>
   );

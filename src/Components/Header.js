@@ -1,13 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import {
-  Typography,
-  Grid,
-  Avatar,
-  IconButton,
-  Button,
-  Link,
-} from "@material-ui/core";
+import { Typography, Grid, Avatar, IconButton, Link } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import avatar from "../Images/mypic.jpg";
 import GitHubIcon from "@material-ui/icons/GitHub";

@@ -51,7 +51,7 @@ const About = () => {
           color: "#01579B",
           textAlign: "center",
           margin: "20px 0 50px 0",
-          fontWeight: '400',
+          fontWeight: "400",
         }}
       >
         About Me

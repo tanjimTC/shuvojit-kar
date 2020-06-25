@@ -1,5 +1,5 @@
-import React from 'react';
-import Home from './Containers/Home';
+import React from "react";
+import Home from "./Containers/Home";
 import {
   createMuiTheme,
   ThemeProvider,
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-      <Home/>
+        <Home />
       </ThemeProvider>
     </div>
   );
