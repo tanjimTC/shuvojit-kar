@@ -5,7 +5,7 @@ export const experience = [
     company: "Programming Hero",
     position: "Software Engineer",
     description: [
-      "Designed and developedProgramming Hero which cross 150K download on Play Store.",
+      "Designed and developed Programming Hero which cross 150K download on Play Store.",
       "Leading the development team to improve perfomance and use best practise.",
     ],
   },

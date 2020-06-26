@@ -22,6 +22,7 @@ const TimeLineItems = () => {
                   {experience.map((x) => (
                     <React.Fragment key={x.id}>
                       <li className="event" data-date={x.year}>
+                      <i class="fa fa-caret-left fa-3x" aria-hidden="true"></i>
                         <h3>{x.company}</h3>
                         <Typography variant="h6">{x.position}</Typography>
                         <hr />

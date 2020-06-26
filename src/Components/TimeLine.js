@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "30px",
   },
   timelineLeftItems: {
-    padding: "20px",
+    padding: "20px 10px",
   },
   btnResume: {
     borderRadius: "25px",
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonContainer: {
-    width: "80%",
+    width: "85%",
     margin: "auto",
   },
   chipContainer: {
@@ -73,6 +73,33 @@ const useStyles = makeStyles((theme) => ({
     },
     "& .MuiChip-root": {
       margin: "4px",
+    },
+  },
+  [theme.breakpoints.down("md")]: {
+    timelineWrapper: {
+      // width: "90%",
+      padding: "20px 0",
+    },
+    timelineLeftItems: {
+      padding: "20px 0",
+    },
+    timelineRight: {
+      width: "100%",
+    },
+    btnResume: {
+      padding: "10px 20px",
+      "& .MuiButton-label": {
+        fontSize: "16px",
+      },
+    },
+    btnResume2: {
+      padding: "10px 20px",
+      "& .MuiButton-label": {
+        fontSize: "16px",
+      },
+    },
+    buttonContainer: {
+      width: "70%",
     },
   },
   [theme.breakpoints.down("xs")]: {
@@ -130,7 +157,7 @@ const TimeLine = () => {
               ></i>
               Download My Résume
             </Typography>
-            <Typography style={{ fontSize: "20px", margin: "20px 25px" }}>
+            <Typography style={{ fontSize: "20px", margin: "20px auto" }}>
               You can download my résume in <b>PDF</b> format if you would like.
             </Typography>
             <Grid
@@ -156,7 +183,7 @@ const TimeLine = () => {
             </Grid>
           </Grid>
 
-          <hr style={{ width: "90%" }} />
+          <hr style={{ width: "90%", height: "0px" }} />
 
           <Grid
             container
@@ -205,7 +232,7 @@ const TimeLine = () => {
             </Grid>
           </Grid>
 
-          <hr style={{ width: "90%" }} />
+          <hr style={{ width: "90%", height: "0px" }} />
 
           <Grid
             container
@@ -243,7 +270,7 @@ const TimeLine = () => {
             </Grid>
           </Grid>
 
-          <hr style={{ width: "90%" }} />
+          <hr style={{ width: "90%", height: "0px" }} />
 
           <Grid
             container
@@ -279,7 +306,7 @@ const TimeLine = () => {
             </Grid>
           </Grid>
 
-          <hr style={{ width: "90%" }} />
+          <hr style={{ width: "90%", height: "0px" }} />
 
           <Grid
             container
@@ -317,7 +344,7 @@ const TimeLine = () => {
             </Grid>
           </Grid>
 
-          <hr style={{ width: "90%" }} />
+          <hr style={{ width: "90%", height: "0px" }} />
 
           <Grid
             container
