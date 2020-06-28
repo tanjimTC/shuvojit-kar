@@ -40,12 +40,14 @@ const About = () => {
     <Box className={classes.aboutConatiner}>
       <Grid container justify="center">
         <Avatar
+          data-aos="zoom-out-up"
           className={classes.avatar}
           src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678078-light-bulb-512.png"
           title="Contemplative Reptile"
         />
       </Grid>
       <Typography
+        data-aos="zoom-out-up"
         variant="h3"
         style={{
           color: "#01579B",
@@ -56,7 +58,7 @@ const About = () => {
       >
         About Me
       </Typography>
-      <Typography align="center" variant="h5">
+      <Typography align="center" variant="h5" data-aos="zoom-out-up">
         Hello! I'm <b>Shuvojit</b>, a 27-year old programmer with a high level
         of expertise in <b>Software Development</b> and a knack for{" "}
         <b>entrepreneurship</b>
@@ -66,6 +68,7 @@ const About = () => {
         align="center"
         variant="h5"
         style={{ paddingRight: "25px", paddingLeft: "25px" }}
+        data-aos="zoom-out-up"
       >
         I've completed my Bachelors Degree in Computer Science at Sylhet
         International University and I spend most of my time working on{" "}
@@ -82,7 +85,7 @@ const About = () => {
         , attending Hackathons or browsing Reddit / Quora!
       </Typography>
       <br /> <br />
-      <Typography align="center" variant="h5">
+      <Typography align="center" variant="h5" data-aos="zoom-out-up">
         I'm currently working at{" "}
         <span>
           <a
@@ -99,7 +102,7 @@ const About = () => {
             />{" "}
           </a>
         </span>{" "}
-        as a Software Engineering.
+        as a CTO.
       </Typography>
       <br /> <br />
       <hr />

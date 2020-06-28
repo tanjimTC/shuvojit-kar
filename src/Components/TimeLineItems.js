@@ -20,8 +20,8 @@ const TimeLineItems = () => {
               <div className="col s12 m12 l12">
                 <ul className="timeline">
                   {experience.map((x) => (
-                    <React.Fragment key={x.id}>
-                      <li className="event" data-date={x.year}>
+                    <React.Fragment  key={x.id} >
+                      <li className="event" data-date={x.year} data-aos="zoom-out-left">
                       <i class="fa fa-caret-left fa-3x" aria-hidden="true"></i>
                         <h3>{x.company}</h3>
                         <Typography variant="h6">{x.position}</Typography>

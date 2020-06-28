@@ -46,17 +46,17 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Box component="div" className={classes.footerContainer}>
-      <Typography className={classes.title} variant="h4">
+    <Box component="div" className={classes.footerContainer} data-aos="zoom-out-up" >
+      <Typography className={classes.title} variant="h4" data-aos="zoom-out-up" data-aos-delay="400">
         CONNECT WITH ME
       </Typography>
       <br />
-      <Typography className={classes.title} variant="h5">
+      <Typography className={classes.title} variant="h5" data-aos="zoom-out-up" data-aos-delay="400">
         Have an interesting idea? <br />
         Get in touch with me!
       </Typography>
       <br />
-      <Grid container justify="center">
+      <Grid container justify="center" >
         <IconButton
           className={classes.socialItems}
           target="_blank"

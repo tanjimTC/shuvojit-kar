@@ -134,10 +134,10 @@ const TimeLine = () => {
   const classes = useStyles();
   return (
     <Box className={classes.timelineWrapper}>
-      <Typography align="center" variant="h2" className={classes.textBlue}>
+      <Typography data-aos="zoom-out-up" align="center" variant="h2" className={classes.textBlue}>
         What you should know
       </Typography>
-      <Typography align="center" className={classes.education}>
+      <Typography data-aos="zoom-out-up" align="center" className={classes.education}>
         This is my <span className={classes.textBlue2}>education</span> and{" "}
         <span className={classes.textBlue2}>work experience</span> timeline.
       </Typography>
@@ -150,7 +150,7 @@ const TimeLine = () => {
             className={classes.timelineLeftItems}
             align="center"
           >
-            <Typography align="center" variant="h4" style={{ margin: "auto" }}>
+            <Typography align="center" variant="h4" style={{ margin: "auto" }} data-aos="zoom-out-right">
               <i
                 style={{ color: "#0D47A1", marginRight: "7px" }}
                 className="far fa-file-alt"
@@ -164,9 +164,13 @@ const TimeLine = () => {
               container
               alignItems="center"
               className={classes.buttonContainer}
+              data-aos="zoom-out-right"
             >
               <Grid item xs={6} md={12} lg={6}>
-                <Button className={classes.btnResume}>
+                <Button className={classes.btnResume}
+                href="../cv.pdf"
+                download
+                >
                   <i
                     className="fas fa-cloud-download-alt"
                     style={{ marginRight: "8px" }}
@@ -175,7 +179,10 @@ const TimeLine = () => {
                 </Button>
               </Grid>
               <Grid item xs={6} md={12} lg={6}>
-                <Button className={classes.btnResume}>
+                <Button className={classes.btnResume}
+                  href="../cv.pdf"
+                    target='_'
+                >
                   <i className="fas fa-eye" style={{ marginRight: "7px" }}></i>
                   View
                 </Button>
@@ -192,6 +199,7 @@ const TimeLine = () => {
             align="center"
           >
             <Typography
+              data-aos="zoom-out-right"
               align="center"
               variant="h4"
               style={{ margin: "10px auto 25px auto" }}
@@ -210,6 +218,7 @@ const TimeLine = () => {
               container
               alignItems="center"
               className={classes.buttonContainer}
+              data-aos="zoom-out-right"
             >
               <Grid item xs={6} md={12} lg={6}>
                 <Button className={classes.btnResume}>
@@ -244,6 +253,7 @@ const TimeLine = () => {
               align="center"
               variant="h4"
               style={{ margin: "10px auto 25px auto" }}
+              data-aos="zoom-out-right"
             >
               <i
                 style={{
@@ -259,6 +269,7 @@ const TimeLine = () => {
               container
               alignItems="center"
               className={classes.chipContainer}
+              data-aos="zoom-out-right"
             >
               <Chip label="Java" />
               <Chip label="Kotlin" />
@@ -282,6 +293,7 @@ const TimeLine = () => {
               align="center"
               variant="h4"
               style={{ margin: "10px auto 25px auto" }}
+              data-aos="zoom-out-right"
             >
               <i
                 style={{
@@ -297,6 +309,7 @@ const TimeLine = () => {
               container
               alignItems="center"
               className={classes.chipContainer}
+              data-aos="zoom-out-right"
             >
               <Chip label="React" />
               <Chip label="Flutter" />
@@ -318,6 +331,7 @@ const TimeLine = () => {
               align="center"
               variant="h4"
               style={{ margin: "10px auto 25px auto" }}
+              data-aos="zoom-out-right"
             >
               <i
                 style={{
@@ -333,6 +347,7 @@ const TimeLine = () => {
               container
               alignItems="center"
               className={classes.chipContainer}
+              data-aos="zoom-out-right"
             >
               <Chip label="Git" />
               <Chip label="Google Cloud" />
@@ -356,6 +371,7 @@ const TimeLine = () => {
               align="center"
               variant="h4"
               style={{ margin: "10px auto 25px auto" }}
+              data-aos="zoom-out-right"
             >
               <i
                 style={{
@@ -371,6 +387,7 @@ const TimeLine = () => {
               container
               alignItems="center"
               className={classes.chipContainer}
+              data-aos="zoom-out-right"
             >
               <Chip label="Artificial Intelligence" />
               <Chip label="Machine Learning" />

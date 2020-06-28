@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import { Typography, Grid, Avatar, IconButton, Link } from "@material-ui/core";
+import {Link} from "react-router-dom"
+import { Typography, Grid, Avatar, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import avatar from "../Images/mypic.jpg";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -52,6 +53,8 @@ const useStyles = makeStyles((theme) => ({
   aboutLink: {
     padding: "10px 25px",
     transition: "0.3s linear",
+    color:'inherit',
+    textDecoration:'none',
     "&:hover": {
       background: "#1B1F24",
     },
@@ -69,15 +72,15 @@ const Header = () => {
   return (
     <Box className={classes.homeConatiner}>
       <Grid container justify="center">
-        <Avatar className={classes.avatar} src={avatar} alt="Shuvojit kar" />
+        <Avatar data-aos="zoom-out-up" className={classes.avatar} src={avatar} alt="Shuvojit kar" />
       </Grid>
-      <Typography className={classes.title} variant="h3">
+      <Typography data-aos="zoom-out-up" data-aos-delay="250" className={classes.title} variant="h3">
         Shuvojit Kar
       </Typography>
-      <Typography className={classes.desc} variant="h6">
+      <Typography data-aos="zoom-out-up" data-aos-delay="350" className={classes.desc} variant="h6">
         I create software, design websites, and make ideas happen
       </Typography>
-      <Grid container justify="center">
+      <Grid data-aos="zoom-out-up" data-aos-delay="650" container justify="center">
         <IconButton
           className={classes.socialItems}
           target="_blank"
@@ -93,15 +96,12 @@ const Header = () => {
           <LinkedInIcon />
         </IconButton>
       </Grid>
-      <Grid container className={classes.aboutItems}>
+      <Grid container className={classes.aboutItems} data-aos="flip-down" data-aos-delay="850">
         <Grid item container xs={6} justify="space-around">
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
-                color="inherit"
                 className={classes.aboutLink}
-                href="#"
-                underline="none"
               >
                 About
               </Link>
@@ -110,10 +110,7 @@ const Header = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
-                color="inherit"
                 className={classes.aboutLink}
-                href="#"
-                underline="none"
               >
                 Resume
               </Link>
@@ -124,10 +121,7 @@ const Header = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
-                color="inherit"
                 className={classes.aboutLink}
-                href="#"
-                underline="none"
               >
                 Contact
               </Link>
@@ -136,11 +130,8 @@ const Header = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
-                color="inherit"
                 className={classes.aboutLink}
-                target="_blank"
-                href="https://www.programming-hero.com/"
-                underline="none"
+                to="/blog"
               >
                 Blog
               </Link>
