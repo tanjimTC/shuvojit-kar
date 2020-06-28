@@ -3,7 +3,6 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import "./App.css";
 import Home from "./Containers/Home";
@@ -15,6 +14,7 @@ import {
   responsiveFontSizes,
 } from "@material-ui/core/styles";
 import BlogContainer from "./Containers/BlogContainer";
+import SingleBlog from "./Components/SingleBlog";
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 function App() {
@@ -31,6 +31,9 @@ function App() {
             </Route>
             <Route path='/blog'>
               <BlogContainer/>
+            </Route>
+            <Route path="/blogpost/:id">
+              <SingleBlog/>
             </Route>
             <Route path='*'>
               <h1>Page not Found</h1>

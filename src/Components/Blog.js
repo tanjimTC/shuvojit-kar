@@ -3,6 +3,9 @@ import { Box, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import avatar from "../Images/mypic.jpg";
+import BlogCard from "./BlogCard";
+import {Blogs} from '../DataBase'
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 const useStyles = makeStyles((theme) => ({
   headerOuter: {
     padding: "3vh 20px 5px 20px",
@@ -13,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
-    margin: "auto",
+    marginLeft: "auto",
   },
   headerInner: {
-    display:'flex',
-    width: "70%",
+    display: "flex",
+    width: "60%",
     margin: "auto",
-    height: '200px'
+    minHeight: "200px",
   },
   title: {
     color: "#fff",
@@ -45,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   [theme.breakpoints.down("md")]: {
     headerInner: {
-      width: "95%",
+      width: "90%",
       margin: "auto",
     },
     avatar: {
@@ -85,31 +88,25 @@ const Blog = () => {
                 data-aos="flip-down"
                 data-aos-delay="850"
               >
-                <Grid item xs={3} md={3}>
+                <Grid item xs={4} >
                   <Typography variant="h5">
-                    <Link className={classes.aboutLink}>About</Link>
+                    <Link to='/' className={classes.aboutLink}>Home</Link>
                   </Typography>
                 </Grid>
-                <Grid item xs={3} md={3}>
+                <Grid item xs={4} >
                   <Typography variant="h5">
-                    <Link className={classes.aboutLink}>Resume</Link>
+                    <Link to='/' className={classes.aboutLink}>Resume</Link>
                   </Typography>
                 </Grid>
-                <Grid item xs={3} md={3}>
+                <Grid item xs={4} >
                   <Typography variant="h5">
-                    <Link className={classes.aboutLink}>Contact</Link>
-                  </Typography>
-                </Grid>
-                <Grid item xs={3} md={3}>
-                  <Typography variant="h5">
-                    <Link className={classes.aboutLink} to="/blog">
-                      Blog
-                    </Link>
+                    <Link  to='/' className={classes.aboutLink}>Contact</Link>
                   </Typography>
                 </Grid>
               </Grid>
+              
             </Grid>
-            <Grid item xs={0} md={6}>
+            <Grid item md={6}>
               <Avatar
                 data-aos="zoom-out-up"
                 className={classes.avatar}
@@ -119,7 +116,22 @@ const Blog = () => {
             </Grid>
           </Grid>
         </Box>
+        <Typography
+        style={{color:'white'}}
+                data-aos="zoom-out-up"
+                data-aos-delay="250"
+                variant="h4"
+                align='center'
+              >
+               Blogs <br/>
+                <ArrowDownwardIcon />
+              </Typography>
+              <br/>
       </Box>
+      {Blogs.map(x=>(
+        <BlogCard key={x.id} blog={x} />
+      ))
+      }
     </Box>
   );
 };

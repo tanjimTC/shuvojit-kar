@@ -101,6 +101,7 @@ const Header = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
+              to='/'
                 className={classes.aboutLink}
               >
                 About
@@ -110,6 +111,7 @@ const Header = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
+              to='/'
                 className={classes.aboutLink}
               >
                 Resume
@@ -121,6 +123,7 @@ const Header = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
               <Link
+              to='/'
                 className={classes.aboutLink}
               >
                 Contact
