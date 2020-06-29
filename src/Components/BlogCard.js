@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
   navlink: {
     textDecoration: "none",
     marginTop: "0px",
-    background: '#4CAF50',
-    borderRadius: '5px',
+    background: "#4CAF50",
+    borderRadius: "5px",
   },
   [theme.breakpoints.down("md")]: {
     root: {
@@ -47,6 +47,27 @@ const useStyles = makeStyles((theme) => ({
     root: {
       width: "90%",
       margin: "30px auto",
+      "& .MuiCardContent-root:last-child": {
+        paddingBottom: "10px",
+      },
+      "& .MuiButton-root": {
+        fontSize: "0.7rem",
+      },
+      "& .MuiTypography-body1 ": {
+        fontSize: "0.9rem",
+        marginTop: "5px",
+        marginBottom:'5px'
+      },
+      '& .MuiTypography-h5':{
+        fontSize: '1.1rem'
+      },
+      '& .MuiSvgIcon-root':{
+        fontSize:'1.1rem'
+      },
+      
+    },
+    cover: {
+      display: "none",
     },
   },
 }));
@@ -54,36 +75,37 @@ const useStyles = makeStyles((theme) => ({
 const BlogCard = (props) => {
   const { blogImage, blogTitle, loves, blogText, id } = props.blog;
   const classes = useStyles();
+  const [width, setWidth] = useState(null);
+  useEffect(()=>{
+    let w = window.innerWidth;
+    console.log(w);
+    setWidth(w);
+  },[])
+  
   return (
-    <div data-aos="zoom-out-left">
-        <Card className={classes.root} >
-      <CardMedia
-        className={classes.cover}
-        image={blogImage}
-      />
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            {blogTitle}
-          </Typography>
-          <Typography variant="body1" color="textSecondary">
-            {blogText.substring(0, 100)}...
-          </Typography>
-          <br />
-          <div className={classes.CardBottom}>
-            <div>
-              <FavoriteIcon style={{color:'#4CAF50'}} /> {loves}
+      <Card className={classes.root}>
+        <CardMedia className={classes.cover} image={blogImage} />
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography component="h5" variant="h5">
+              {blogTitle}
+            </Typography>
+            <Typography variant="body1" color="textSecondary">
+              {blogText.substring(0, 100)}...
+            </Typography>
+            <div className={classes.CardBottom}>
+              <div>
+                <FavoriteIcon style={{ color: "#4CAF50" }} /> {loves}
+              </div>
+              <Link className={classes.navlink} to={`/blogpost/${id}`}>
+                <Button style={{ color: "#fff" }}>
+                  Read full blog <ArrowForwardIcon fontSize="small" />
+                </Button>
+              </Link>
             </div>
-            <Link className={classes.navlink} to={`/blogpost/${id}`}>
-              <Button style={{color:'#fff'}}>
-                Read full blog <ArrowForwardIcon fontSize="small" />
-              </Button>
-            </Link>
-          </div>
-        </CardContent>
-      </div>
-    </Card>
-    </div>
+          </CardContent>
+        </div>
+      </Card>
   );
 };
 

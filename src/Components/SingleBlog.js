@@ -82,15 +82,24 @@ const useStyles = makeStyles((theme) => ({
       margin: "auto",
     },
     blogPostContainer: {
-      width: "80%",
+      width: "90%",
       margin: "10px auto 30px auto ",
     },
   },
   [theme.breakpoints.down("xs")]: {
     headerInner: {
-      width: "95%",
+      width: "100%",
       margin: "auto",
     },
+    aboutLink:{
+      marginRight:'10px',
+      padding: "4px 10px",
+    },
+    headerOuter:{
+      "& .MuiTypography-h4":{
+        fontSize: '1.4rem'
+      },
+    }
   },
 }));
 const SingleBlog = (props) => {
@@ -106,14 +115,14 @@ const SingleBlog = (props) => {
     <Box component="div">
       <Box className={classes.headerOuter}>
         <Grid container className={classes.headerInner}>
-          <Grid item xs={8} md={6} data-aos="zoom-out-up"
+          <Grid item xs={6} md={6} data-aos="zoom-out-up"
                 data-aos-delay="250">
             <Typography variant="h4" className={classes.title}>
               {blog.author}
             </Typography>
             <small style={{ color: "#4caf50", fontSize: "13px" }}>author</small>
           </Grid>
-          <Grid item xs={4} md={6}>
+          <Grid item xs={6} md={6}>
             <Grid container className={classes.navItems} data-aos="zoom-out-up"
                 data-aos-delay="250">
               <Link className={classes.aboutLink} to="/blog" >
@@ -138,7 +147,7 @@ const SingleBlog = (props) => {
           <img className={classes.image} src={blog.blogImage} alt="" />
         </div>
         <br />
-        <Typography variant="h4">{blog.blogTitle}</Typography>
+        <Typography variant="h5">{blog.blogTitle}</Typography>
         <br/>
         <div className={classes.CardBottom}>
           <div style={{ display: "flex" }} data-aos="zoom-out-right">
