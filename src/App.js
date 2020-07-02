@@ -29,7 +29,7 @@ function App() {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route path='/blog'>
+            <Route  path='/blog'>
               <BlogContainer/>
             </Route>
             <Route path="/blogpost/:id">

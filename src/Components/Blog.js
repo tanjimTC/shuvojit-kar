@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -6,7 +6,15 @@ import avatar from "../Images/mypic.jpg";
 import BlogCard from "./BlogCard";
 import { Blogs } from "../DataBase";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import TablePagination from "@material-ui/core/TablePagination";
+import Pagination from "@material-ui/lab/Pagination";
+
 const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
   headerOuter: {
     padding: "3vh 20px 5px 20px",
     background: "-webkit-radial-gradient(circle, #2c3e50, #1a1a1a)",
@@ -46,6 +54,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "20px",
     },
   },
+  pagination:{
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    marginBottom:'30px'
+  },
   [theme.breakpoints.down("md")]: {
     headerInner: {
       width: "90%",
@@ -60,9 +74,9 @@ const useStyles = makeStyles((theme) => ({
       width: "95%",
       margin: "auto",
       minHeight: "150px",
-      '& .makeStyles-aboutLink-5':{
-        fontSize:'1rem'
-      }
+      "& .makeStyles-aboutLink-5": {
+        fontSize: "1rem",
+      },
     },
     avatar: {
       display: "none",
@@ -73,16 +87,45 @@ const useStyles = makeStyles((theme) => ({
     headerOuter: {
       padding: "20px 10px 5px 10px",
     },
-    myBlogs:{
-      marginTop: '-30px'
+    myBlogs: {
+      marginTop: "-30px",
+    },
+    pagination:{
+      '& .MuiTablePagination-selectRoot':{
+        marginLeft : '2px',
+        marginRight : '2px'
+      },
+      '& .MuiTablePagination-actions':{
+        marginLeft:'0px'
+      },
+      '& .MuiIconButton-root':{
+        padding :'12px 0px'
+      },
+      '& .MuiToolbar-gutters':{
+        paddingLeft :'0px'
+      },
+      '& .MuiSelect-select':{
+        minWidth:'0px'
+      },
     }
   },
 }));
 
 const Blog = () => {
   const classes = useStyles();
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(3);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, Blogs.length - page * rowsPerPage);
   return (
-    <Box component="div" className={classes.blogwrapper}>
+    <Box component="div" className={classes.root}>
       <Box component="div" className={classes.headerOuter}>
         <Box component="div" className={classes.headerInner}>
           <Grid container style={{ alignItems: "center" }}>
@@ -146,9 +189,19 @@ const Blog = () => {
           <ArrowDownwardIcon />
         </Typography>
       </Box>
-      {Blogs.map((x) => (
+      {Blogs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((x) => (
         <BlogCard key={x.id} blog={x} />
       ))}
+      <TablePagination
+        rowsPerPageOptions={[3, 5, 10]}
+        component="div"
+        count={Blogs.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+        className={classes.pagination}
+      />
     </Box>
   );
 };

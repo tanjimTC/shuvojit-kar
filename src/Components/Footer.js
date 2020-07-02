@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Box component="div" className={classes.footerContainer} data-aos="zoom-out-up" >
+    <Box name='test1' component="div" className={classes.footerContainer} data-aos="zoom-out-up" >
       <Typography className={classes.title} variant="h4" data-aos="zoom-out-up" data-aos-delay="400">
         CONNECT WITH ME
       </Typography>
