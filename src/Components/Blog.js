@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -7,7 +7,6 @@ import BlogCard from "./BlogCard";
 import { Blogs } from "../DataBase";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import TablePagination from "@material-ui/core/TablePagination";
-import Pagination from "@material-ui/lab/Pagination";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,11 +53,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "20px",
     },
   },
-  pagination:{
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    marginBottom:'30px'
+  pagination: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: "30px",
   },
   [theme.breakpoints.down("md")]: {
     headerInner: {
@@ -90,24 +89,24 @@ const useStyles = makeStyles((theme) => ({
     myBlogs: {
       marginTop: "-30px",
     },
-    pagination:{
-      '& .MuiTablePagination-selectRoot':{
-        marginLeft : '2px',
-        marginRight : '2px'
+    pagination: {
+      "& .MuiTablePagination-selectRoot": {
+        marginLeft: "2px",
+        marginRight: "2px",
       },
-      '& .MuiTablePagination-actions':{
-        marginLeft:'0px'
+      "& .MuiTablePagination-actions": {
+        marginLeft: "0px",
       },
-      '& .MuiIconButton-root':{
-        padding :'12px 0px'
+      "& .MuiIconButton-root": {
+        padding: "12px 0px",
       },
-      '& .MuiToolbar-gutters':{
-        paddingLeft :'0px'
+      "& .MuiToolbar-gutters": {
+        paddingLeft: "0px",
       },
-      '& .MuiSelect-select':{
-        minWidth:'0px'
+      "& .MuiSelect-select": {
+        minWidth: "0px",
       },
-    }
+    },
   },
 }));
 
@@ -119,11 +118,10 @@ const Blog = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, Blogs.length - page * rowsPerPage);
   return (
     <Box component="div" className={classes.root}>
       <Box component="div" className={classes.headerOuter}>
@@ -189,9 +187,11 @@ const Blog = () => {
           <ArrowDownwardIcon />
         </Typography>
       </Box>
-      {Blogs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((x) => (
-        <BlogCard key={x.id} blog={x} />
-      ))}
+      {Blogs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(
+        (x) => (
+          <BlogCard key={x.id} blog={x} />
+        )
+      )}
       <TablePagination
         rowsPerPageOptions={[3, 5, 10]}
         component="div"
