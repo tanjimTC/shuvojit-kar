@@ -1,21 +1,21 @@
 import React from "react";
 import "./Rich.css";
-import { Editor, EditorState, RichUtils, convertFromRaw } from "draft-js";
+import { Editor, EditorState, RichUtils } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 export default class RichEditorExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = { editorState: EditorState.createEmpty() };
 
-    const content = window.localStorage.getItem("content");
+    // const content = window.localStorage.getItem("content");
 
-    if (content) {
-      this.state.editorState = EditorState.createWithContent(
-        convertFromRaw(JSON.parse(content))
-      );
-    } else {
-      this.state.editorState = EditorState.createEmpty();
-    }
+    // if (content) {
+    //   this.state.editorState = EditorState.createWithContent(
+    //     convertFromRaw(JSON.parse(content))
+    //   );
+    // } else {
+    //   this.state.editorState = EditorState.createEmpty();
+    // }
 
     this.focus = () => this.refs.editor.focus();
     this.onChange = (editorState) => this.setState({ editorState });
@@ -54,24 +54,27 @@ export default class RichEditorExample extends React.Component {
   render() {
     const { editorState } = this.state;
     let className = "RichEditor-editor";
-    var contentState = editorState.getCurrentContent();
+    let contentState = editorState.getCurrentContent();
+    this.props.setBolog(stateToHTML(contentState));
     if (!contentState.hasText()) {
       if (contentState.getBlockMap().first().getType() !== "unstyled") {
         className += " RichEditor-hidePlaceholder";
       }
     }
-    const saveContent = () => {
-      window.localStorage.setItem("content", stateToHTML(contentState));
-    };
-    const convertToEditorState = () => {
-      console.log(window.localStorage.getItem("content"));
-    };
-    const html = window.localStorage.getItem("content");
+    // const saveContent = () => {
+    //   window.localStorage.setItem("content", stateToHTML(contentState));
+    // };
+    // const convertToEditorState = () => {
+    //   console.log("got", window.localStorage.getItem("content"));
+    // };
+    // const html = window.localStorage.getItem("content");
     return (
       <div className="RichEditor-root">
-        <button onClick={() => saveContent(contentState)}>Submit</button>
-        <button onClick={convertToEditorState}>get</button>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        {/* <button onClick={() => this.props.saveContent(contentState)}>
+          Submit
+        </button> */}
+        {/* <button onClick={convertToEditorState}>get</button> */}
+        {/* {html && <div dangerouslySetInnerHTML={{ __html: html }} />} */}
         <BlockStyleControls
           editorState={editorState}
           onToggle={this.toggleBlockType}

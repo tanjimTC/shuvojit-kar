@@ -14,6 +14,7 @@ import SingleBlog from "./Components/SingleBlog";
 import RichEditorExample from "./Components/RichEditorExample ";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import Details from "./Components/Details";
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 function App() {
@@ -36,7 +37,8 @@ function App() {
             </Route>
             <Route path="/write">
               <Header />
-              <RichEditorExample />
+              <Details />
+              {/* <RichEditorExample /> */}
               <Footer />
             </Route>
             <Route path="*">

@@ -141,15 +141,18 @@ const Header = () => {
         <Grid item container xs={6} justify="space-around">
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
-              <Link to="/"  className={classes.aboutLink}>
+              <Link to="/" className={classes.aboutLink}>
                 Contact
               </Link>
             </Typography>
           </Grid>
           <Grid item xs={12} md={3}>
             <Typography variant="h5">
-              <Link className={classes.aboutLink}  to="/blog">
+              <Link className={classes.aboutLink} to="/blog">
                 Blog
+              </Link>
+              <Link className={classes.aboutLink} to="/write">
+                write blog
               </Link>
             </Typography>
           </Grid>
