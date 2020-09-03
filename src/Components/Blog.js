@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Grid, Typography, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import avatar from "../Images/mypic.jpg";
 import BlogCard from "./BlogCard";
-import { Blogs } from "../DataBase";
+// import { Blogs } from "../DataBase";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import TablePagination from "@material-ui/core/TablePagination";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -113,11 +114,18 @@ const useStyles = makeStyles((theme) => ({
 const Blog = () => {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
+  const [blog, setblog] = useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
+  useEffect(() => {
+    fetch("http://localhost:4200/blogs")
+      .then((res) => res.json())
+      .then((data) => {
+        setblog(data);
+      });
+  }, []);
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -187,15 +195,14 @@ const Blog = () => {
           <ArrowDownwardIcon />
         </Typography>
       </Box>
-      {Blogs.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(
-        (x) => (
-          <BlogCard key={x.id} blog={x} />
-        )
-      )}
+      {blog &&
+        blog
+          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+          .map((x) => <BlogCard key={x.id} blog={x} />)}
       <TablePagination
         rowsPerPageOptions={[3, 5, 10]}
         component="div"
-        count={Blogs.length}
+        count={blog.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

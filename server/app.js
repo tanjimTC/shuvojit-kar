@@ -1,25 +1,36 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const helmet = require("helmet");
 
-// Middle ware
-app.use(cors());
-
-// Routes
-app.get("/", (req, res, next) => {
-  res.status(200).json({
-    message: "You requested index page",
-  });
+mongoose.connect("mongodb://localhost/blogProject", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-// Catch 404 error and forward them to error handlers
+const app = express();
+app.use(helmet());
+
+//Routes
+const users = require("./routes/users");
+const blogs = require("./routes/blogs");
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// Routes
+app.use("/users", users);
+app.use("/blogs", blogs);
+
+// Catch 404 Errors and send them to Error handler
 app.use((req, res, next) => {
-  const err = new Error("Not Found");
+  const err = new Error("Not found");
   err.status = 404;
   next(err);
 });
 
-// error hanlers
+// Error handler function
 app.use((err, req, res, next) => {
   const error = app.get("env") === "development" ? err : {};
   const status = err.status || 500;
@@ -34,6 +45,6 @@ app.use((err, req, res, next) => {
   console.error(err);
 });
 
-// start the serevr
+// Start the server
 const port = app.get("port") || 4200;
-app.listen(port, () => console.log("server started"));
+app.listen(port, () => console.log(`Listening to port ${port}`));

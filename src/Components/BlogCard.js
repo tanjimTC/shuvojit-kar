@@ -4,10 +4,12 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+// import FavoriteIcon from "@material-ui/icons/Favorite";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import image from "../Images/mypic.jpg";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
+const htmlToText = require("html-to-text");
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -16,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     border: "1px solid lightgray",
     boxShadow: "5px 5px 10px lightgrey",
-   
   },
   details: {
     display: "flex",
     flexDirection: "column",
+    width: "75%",
   },
   content: {
     flex: "1 0 auto",
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   CardBottom: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
   navlink: {
     textDecoration: "none",
@@ -57,15 +59,14 @@ const useStyles = makeStyles((theme) => ({
       "& .MuiTypography-body1 ": {
         fontSize: "0.9rem",
         marginTop: "5px",
-        marginBottom:'5px'
+        marginBottom: "5px",
       },
-      '& .MuiTypography-h5':{
-        fontSize: '1.1rem'
+      "& .MuiTypography-h5": {
+        fontSize: "1.1rem",
       },
-      '& .MuiSvgIcon-root':{
-        fontSize:'1.1rem'
+      "& .MuiSvgIcon-root": {
+        fontSize: "1.1rem",
       },
-      
     },
     cover: {
       display: "none",
@@ -74,34 +75,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BlogCard = (props) => {
-  const { blogImage, blogTitle, loves, blogText, id } = props.blog;
+  const { blogTitle, blogText, _id } = props.blog;
+  const text = htmlToText.fromString(blogText);
   const classes = useStyles();
-  
-  
+
   return (
-      <Card className={classes.root}>
-        <CardMedia className={classes.cover} image={blogImage} />
-        <div className={classes.details}>
-          <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-              {blogTitle}
-            </Typography>
-            <Typography variant="body1" color="textSecondary">
-              {blogText.substring(0, 100)}...
-            </Typography>
-            <div className={classes.CardBottom}>
-              <div>
-                <FavoriteIcon style={{ color: "#4CAF50" }} /> {loves}
-              </div>
-              <Link className={classes.navlink} to={`/blogpost/${id}`}>
-                <Button style={{ color: "#fff" }}>
-                  Read full blog <ArrowForwardIcon fontSize="small" />
-                </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </div>
-      </Card>
+    <Card className={classes.root}>
+      <CardMedia className={classes.cover} image={image} />
+      <div className={classes.details}>
+        <CardContent className={classes.content}>
+          <Typography component="h5" variant="h5">
+            {blogTitle}
+          </Typography>
+          <Typography variant="body1" color="textSecondary">
+            {text.substring(0, 100)}...
+          </Typography>
+          <div className={classes.CardBottom}>
+            <Link className={classes.navlink} to={`/blogpost/${_id}`}>
+              <Button style={{ color: "#fff" }}>
+                Read full blog <ArrowForwardIcon fontSize="small" />
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </div>
+    </Card>
   );
 };
 

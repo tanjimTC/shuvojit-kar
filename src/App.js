@@ -11,7 +11,6 @@ import {
 } from "@material-ui/core/styles";
 import BlogContainer from "./Containers/BlogContainer";
 import SingleBlog from "./Components/SingleBlog";
-import RichEditorExample from "./Components/RichEditorExample ";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Details from "./Components/Details";
@@ -32,7 +31,7 @@ function App() {
             <Route path="/blog">
               <BlogContainer />
             </Route>
-            <Route path="/blogpost/:id">
+            <Route path="/blogpost/:_id">
               <SingleBlog />
             </Route>
             <Route path="/write">

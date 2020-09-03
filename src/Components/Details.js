@@ -6,12 +6,12 @@ import { useForm } from "react-hook-form";
 const useStyles = makeStyles((theme) => ({
   details: {
     background: "#d8eee0",
-    border: "1px solid #ddd",
+    border: "1px solid black",
     fontFamily: "Georgia, serif",
-    fontsize: "14px",
-    padding: "15px",
-    margin: "50px auto",
+    padding: "30px",
+    margin: "50px auto ",
     width: "70%",
+    borderRadius: "15px",
   },
   blogDetailsInput: {
     background: "#d8eee0",
@@ -19,9 +19,27 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Georgia, serif",
     padding: "15px",
     border: "1px solid black",
-    marginBottom: "10px",
+    marginTop: "10px",
     width: "100%",
     boxSizing: "border-box",
+  },
+  none: {
+    userSelect: "none",
+    color: "transparent",
+  },
+  error: {
+    color: "rgb(223, 51, 51)",
+  },
+  submitBlog: {
+    marginTop: "20px",
+    width: "150px",
+    padding: "10px",
+    background: "#4bbd50",
+    color: "white",
+    border: "none",
+    cursor: "pointer",
+    borderRadius: "15px",
+    fontSize: "16px",
   },
 }));
 const Details = () => {
@@ -31,32 +49,67 @@ const Details = () => {
   };
   const [bolog, setBolog] = useState("");
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
-    data.text = bolog;
+  const onSubmit = (data, e) => {
+    data.blogText = bolog;
+    let today = new Date();
+    data.date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
     console.log(data);
+    fetch("http://localhost:4200/blogs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("data inserted", data));
+    e.target.reset();
   };
+  // useEffect(() => {
+  //   fetch("http://localhost:4200/blogs")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
   return (
     <div className={classes.details}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Blog tittle */}
         <input
           className={classes.blogDetailsInput}
           name="blogTitle"
           placeholder="Blog Title *"
           ref={register({ required: true })}
-        />
-        {errors.blogTitle && <span>This field is required</span>}
+        />{" "}
         <br />
+        {errors.blogTitle ? (
+          <span className={classes.error}>This field is required</span>
+        ) : (
+          <span className={classes.none}>none</span>
+        )}
+        <br />
+        {/* Blog tittle Ends */}
+        {/* author */}
         <input
           className={classes.blogDetailsInput}
           name="author"
-          placeholder="Blog Title"
-          ref={register({ required: true })}
-        />
-        {errors.author && <span>This field is required</span>}
+          placeholder="Author"
+          ref={register}
+        />{" "}
         <br />
-
+        <span className={classes.none}>none</span>
+        {/* author ends */}
         <RichEditorExample saveContent={saveContent} setBolog={setBolog} />
-        <input type="submit" />
+        {/* <input className={classes.submitBlog} type="submit" /> */}
+        <button className={classes.submitBlog} type="submit">
+          Post Blog
+        </button>
       </form>
     </div>
   );
