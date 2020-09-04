@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import HomeIcon from "@material-ui/icons/Home";
-import write from "../Images/write-unsplash.jpg";
 const useStyles = makeStyles((theme) => ({
   headerOuter: {
     padding: "3vh 20px 5px 20px",
@@ -121,7 +120,7 @@ const SingleBlog = (props) => {
         <Grid container className={classes.headerInner}>
           <Grid item xs={6} md={6} data-aos="zoom-out-up" data-aos-delay="250">
             <Typography variant="h5" className={classes.title}>
-              {blog.author ? <>{blog.author}</> : <>Shuvojit Kar</>}
+              Shuvojit Kar
             </Typography>
             <small style={{ color: "#4caf50", fontSize: "13px" }}>author</small>
           </Grid>
@@ -153,20 +152,8 @@ const SingleBlog = (props) => {
         </Typography>
         <br />
         <br />
-        {/* <Typography
-          data-aos="zoom-out-up"
-          data-aos-delay="350"
-          align="center"
-          className={classes.slug}
-        >
-          {blog.slug}
-        </Typography> */}
       </Box>
       <Box component="div" className={classes.blogPostContainer}>
-        <br />
-        <div className={classes.blogBg} data-aos="zoom-out-left">
-          <img className={classes.image} src={write} alt="" />
-        </div>
         <br />
         <Typography variant="h5">{blog.blogTitle}</Typography>
         <br />
@@ -200,7 +187,7 @@ const SingleBlog = (props) => {
         <Typography variant="body1" data-aos="zoom-out-up">
           {/* {text && text} */}
           {blog.blogText && (
-            <div dangerouslySetInnerHTML={{ __html: blog.blogText }} />
+            <span dangerouslySetInnerHTML={{ __html: blog.blogText }} />
           )}
         </Typography>
         <br /> <br />

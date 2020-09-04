@@ -151,9 +151,9 @@ const Header = () => {
               <Link className={classes.aboutLink} to="/blog">
                 Blog
               </Link>
-              <Link className={classes.aboutLink} to="/write">
+              {/* <Link className={classes.aboutLink} to="/write">
                 write blog
-              </Link>
+              </Link> */}
             </Typography>
           </Grid>
         </Grid>

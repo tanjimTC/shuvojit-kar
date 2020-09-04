@@ -53,7 +53,6 @@ module.exports = {
     }),
     blogSchema: Joi.object().keys({
       blogTitle: Joi.string().required(),
-      author: Joi.string(),
       date: Joi.any(),
       blogText: Joi.string().required(),
     }),

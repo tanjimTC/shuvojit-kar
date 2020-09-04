@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import RichEditorExample from "./RichEditorExample ";
 import { useState } from "react";
@@ -44,9 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Details = () => {
   const classes = useStyles();
-  const saveContent = () => {
-    console.log("data submitted");
-  };
+  const history = useHistory();
   const [bolog, setBolog] = useState("");
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data, e) => {
@@ -58,7 +57,6 @@ const Details = () => {
       (today.getMonth() + 1) +
       "-" +
       today.getDate();
-    console.log(data);
     fetch("http://localhost:4200/blogs", {
       method: "POST",
       headers: {
@@ -67,16 +65,13 @@ const Details = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log("data inserted", data));
-    e.target.reset();
+      .then((data) => {
+        console.log("data inserted", data);
+        alert("You are about to post a new blog!!");
+        e.target.reset();
+        history.push("/blog");
+      });
   };
-  // useEffect(() => {
-  //   fetch("http://localhost:4200/blogs")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
   return (
     <div className={classes.details}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -95,19 +90,13 @@ const Details = () => {
         )}
         <br />
         {/* Blog tittle Ends */}
-        {/* author */}
-        <input
-          className={classes.blogDetailsInput}
-          name="author"
-          placeholder="Author"
-          ref={register}
-        />{" "}
-        <br />
-        <span className={classes.none}>none</span>
-        {/* author ends */}
-        <RichEditorExample saveContent={saveContent} setBolog={setBolog} />
+        <RichEditorExample setBolog={setBolog} />
         {/* <input className={classes.submitBlog} type="submit" /> */}
-        <button className={classes.submitBlog} type="submit">
+        <button
+          className={classes.submitBlog}
+          type="submit"
+          onClick={() => setBolog("k")}
+        >
           Post Blog
         </button>
       </form>

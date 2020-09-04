@@ -6,7 +6,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 // import FavoriteIcon from "@material-ui/icons/Favorite";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-import image from "../Images/mypic.jpg";
+import image from "../Images/blog.jpg";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 const htmlToText = require("html-to-text");

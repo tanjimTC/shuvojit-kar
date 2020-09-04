@@ -198,7 +198,7 @@ const Blog = () => {
       {blog &&
         blog
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((x) => <BlogCard key={x.id} blog={x} />)}
+          .map((x) => <BlogCard key={x._id} blog={x} />)}
       <TablePagination
         rowsPerPageOptions={[3, 5, 10]}
         component="div"
