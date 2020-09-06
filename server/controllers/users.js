@@ -34,10 +34,4 @@ module.exports = {
     const result = await User.findByIdAndUpdate(userId, newUser);
     res.status(200).json({ status: true });
   },
-
-  getUserCars: async (req, res, next) => {
-    const { userId } = req.value.params;
-    const user = await User.findById(userId).populate("cars");
-    res.status(200).json(user.cars);
-  },
 };

@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
+const PORT = process.env.PORT || "4200";
 
 mongoose.connect("mongodb://localhost/blogProject", {
   useNewUrlParser: true,
@@ -46,5 +47,5 @@ app.use("/blogs", blogs);
 // });
 
 // Start the server
-// const port = app.get("port") || 4200;
-app.listen(4200, () => console.log("Listening to port 4200"));
+app.set("port", PORT);
+app.listen(PORT, () => console.log(`Listening to port ${PORT}`));

@@ -38,10 +38,4 @@ module.exports = {
     const blog = await Blog.remove({ _id: blogId });
     res.status(200).json(blog);
   },
-
-  getUserCars: async (req, res, next) => {
-    const { blogId } = req.value.params;
-    const blog = await Blog.findById(blogId).populate("cars");
-    res.status(200).json(blog.cars);
-  },
 };
