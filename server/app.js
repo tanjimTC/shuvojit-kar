@@ -46,5 +46,5 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const port = app.get("port") || 4200;
+const port = 4200;
 app.listen(port, () => console.log(`Listening to port ${port}`));
