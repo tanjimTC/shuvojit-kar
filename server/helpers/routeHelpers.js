@@ -57,9 +57,9 @@ module.exports = {
       blogText: Joi.string().required(),
     }),
     userOptionalSchema: Joi.object().keys({
-      fistName: Joi.string(),
-      lastName: Joi.string(),
-      email: Joi.string().email(),
+      blogTitle: Joi.string().required(),
+      date: Joi.any(),
+      blogText: Joi.string().required(),
     }),
   },
 };

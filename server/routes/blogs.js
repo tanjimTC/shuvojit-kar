@@ -29,6 +29,7 @@ router
       validateBody(schemas.userOptionalSchema),
     ],
     userController.updateBlog
-  );
+  )
+  .delete(validateParam(schemas.idSchema, "blogId"), userController.deleteBlog);
 
 module.exports = router;

@@ -7,7 +7,6 @@ module.exports = {
   },
 
   newBlog: async (req, res, next) => {
-    console.log("req value contains", req.value.body);
     const newBlog = new Blog(req.value.body);
     const blog = await newBlog.save();
     res.status(201).json(blog);
@@ -33,6 +32,11 @@ module.exports = {
     const newBlog = req.value.body;
     const result = await Blog.findByIdAndUpdate(blogId, newBlog);
     res.status(200).json({ status: true });
+  },
+  deleteBlog: async (req, res, next) => {
+    const blogId = req.params.blogId;
+    const blog = await Blog.remove({ _id: blogId });
+    res.status(200).json(blog);
   },
 
   getUserCars: async (req, res, next) => {
