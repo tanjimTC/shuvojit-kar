@@ -24,27 +24,27 @@ app.use("/users", users);
 app.use("/blogs", blogs);
 
 // Catch 404 Errors and send them to Error handler
-app.use((req, res, next) => {
-  const err = new Error("Not found");
-  err.status = 404;
-  next(err);
-});
+// app.use((req, res, next) => {
+//   const err = new Error("Not found");
+//   err.status = 404;
+//   next(err);
+// });
 
 // Error handler function
-app.use((err, req, res, next) => {
-  const error = app.get("env") === "development" ? err : {};
-  const status = err.status || 500;
+// app.use((err, req, res, next) => {
+//   const error = app.get("env") === "development" ? err : {};
+//   const status = err.status || 500;
 
-  // Response to client
-  res.status(status).json({
-    error: {
-      message: error.message,
-    },
-  });
-  // Response to ourself
-  console.error(err);
-});
+//   // Response to client
+//   res.status(status).json({
+//     error: {
+//       message: error.message,
+//     },
+//   });
+//   // Response to ourself
+//   console.error(err);
+// });
 
 // Start the server
-const port = 4200;
+const port = app.get("port") || 4200;
 app.listen(port, () => console.log(`Listening to port ${port}`));
