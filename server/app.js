@@ -46,5 +46,5 @@ app.use("/blogs", blogs);
 // });
 
 // Start the server
-const port = app.get("port") || 4200;
-app.listen(port, () => console.log(`Listening to port ${port}`));
+// const port = app.get("port") || 4200;
+app.listen(4200, () => console.log("Listening to port 4200"));
