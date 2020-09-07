@@ -3,7 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
-const PORT = process.env.PORT || "4200";
+const PORT = process.env.PORT || 4200;
 
 mongoose.connect("mongodb://localhost/blogProject", {
   useNewUrlParser: true,
