@@ -57,7 +57,7 @@ const Details = () => {
       (today.getMonth() + 1) +
       "-" +
       today.getDate();
-    fetch("http://localhost:4200/blogs", {
+    fetch("https://murmuring-inlet-92255.herokuapp.com/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

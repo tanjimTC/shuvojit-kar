@@ -120,7 +120,7 @@ const Blog = () => {
     setPage(newPage);
   };
   useEffect(() => {
-    fetch("http://localhost:4200/blogs")
+    fetch("https://murmuring-inlet-92255.herokuapp.com/blogs")
       .then((res) => res.json())
       .then((data) => {
         setblog(data);

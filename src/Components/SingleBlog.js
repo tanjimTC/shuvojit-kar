@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import PersonIcon from "@material-ui/icons/Person";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import HomeIcon from "@material-ui/icons/Home";
+import LongMenu from "./LongMenu";
 const useStyles = makeStyles((theme) => ({
   headerOuter: {
     padding: "3vh 20px 5px 20px",
@@ -59,6 +60,11 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "20px",
     },
   },
+  menu: {
+    "& .MuiIconButton-root": {
+      padding: "12px 12px",
+    },
+  },
   slug: {
     color: "rgb(67, 210, 73)",
     fontStyle: "italic",
@@ -74,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
   CardBottom: {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   [theme.breakpoints.down("md")]: {
     headerInner: {
@@ -106,7 +113,7 @@ const SingleBlog = (props) => {
   const { _id } = useParams();
   const [blog, setBlog] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4200/blogs")
+    fetch("https://murmuring-inlet-92255.herokuapp.com/blogs")
       .then((res) => res.json())
       .then((data) => {
         const blogDetails = data.find((x) => x._id === _id);
@@ -163,19 +170,19 @@ const SingleBlog = (props) => {
               <PersonIcon style={{ color: "#4CAF50", marginRight: "5px" }} />
             </div>
             <div style={{ marginTop: "5px" }}>
-              {blog.author ? (
-                <span>{blog.author}</span>
-              ) : (
-                <span>Shuvojit Kar</span>
-              )}
+              <span>Shuvojit Kar</span>
             </div>
           </div>
-          <div style={{ display: "flex" }} data-aos="zoom-out-left">
+          <div
+            className={classes.menu}
+            style={{ display: "flex", alignItems: "center" }}
+            data-aos="zoom-out-left"
+          >
             <div>
               <DateRangeIcon style={{ color: "#4CAF50", marginRight: "5px" }} />
             </div>
             <div style={{ marginTop: "5px" }}>{blog.date}</div>
-            {/* <p>jjajajaja</p> */}
+            {/* <LongMenu _id={_id} /> */}
           </div>
         </div>
         <br /> <br />
@@ -185,7 +192,6 @@ const SingleBlog = (props) => {
         />
         <br /> <br />
         <Typography variant="body1" data-aos="zoom-out-up">
-          {/* {text && text} */}
           {blog.blogText && (
             <span dangerouslySetInnerHTML={{ __html: blog.blogText }} />
           )}
