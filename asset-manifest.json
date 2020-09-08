@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/shuvojit-kar/static/css/main.54dd28b7.chunk.css",
+    "main.js": "/shuvojit-kar/static/js/main.7a994e33.chunk.js",
+    "main.js.map": "/shuvojit-kar/static/js/main.7a994e33.chunk.js.map",
+    "runtime-main.js": "/shuvojit-kar/static/js/runtime-main.bf752806.js",
+    "runtime-main.js.map": "/shuvojit-kar/static/js/runtime-main.bf752806.js.map",
+    "static/css/2.eb43dee1.chunk.css": "/shuvojit-kar/static/css/2.eb43dee1.chunk.css",
+    "static/js/2.f94d44bd.chunk.js": "/shuvojit-kar/static/js/2.f94d44bd.chunk.js",
+    "static/js/2.f94d44bd.chunk.js.map": "/shuvojit-kar/static/js/2.f94d44bd.chunk.js.map",
+    "index.html": "/shuvojit-kar/index.html",
+    "precache-manifest.2f2b95d63ab2501ae0ccffc583051e60.js": "/shuvojit-kar/precache-manifest.2f2b95d63ab2501ae0ccffc583051e60.js",
+    "service-worker.js": "/shuvojit-kar/service-worker.js",
+    "static/css/2.eb43dee1.chunk.css.map": "/shuvojit-kar/static/css/2.eb43dee1.chunk.css.map",
+    "static/css/main.54dd28b7.chunk.css.map": "/shuvojit-kar/static/css/main.54dd28b7.chunk.css.map",
+    "static/js/2.f94d44bd.chunk.js.LICENSE.txt": "/shuvojit-kar/static/js/2.f94d44bd.chunk.js.LICENSE.txt",
+    "static/media/blog.jpg": "/shuvojit-kar/static/media/blog.4e5ca0c8.jpg",
+    "static/media/mypic.jpg": "/shuvojit-kar/static/media/mypic.7a473c5b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bf752806.js",
+    "static/css/2.eb43dee1.chunk.css",
+    "static/js/2.f94d44bd.chunk.js",
+    "static/css/main.54dd28b7.chunk.css",
+    "static/js/main.7a994e33.chunk.js"
+  ]
+}
